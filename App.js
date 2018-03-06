@@ -154,26 +154,20 @@ export default class App extends React.Component {
           <Text>{data.fields.item}</Text>
         </Body>
         <Right>
-          <Text note>{data.fields.quantity} votes</Text>
+          <Text note>{data.fields.quantity} </Text>
         </Right>
       </ListItem>
     )
   }
 
   // The UI for what appears when you swipe right
-  renderSwipeRight(data, secId, rowId, rowMap) {
-    return (
-      <Button full success onPress={() => this.upvoteIdea(data, secId, rowId, rowMap)}>
-        <Icon active name="thumbs-up" />
-      </Button>
-    )
-  }
+
 
   // The UI for what appears when you swipe left
   renderSwipeLeft(data, secId, rowId, rowMap) {
     return (
-      <Button full danger onPress={() => this.downvoteIdea(data, secId, rowId, rowMap)}>
-        <Icon active name="thumbs-down" />
+      <Button full success onPress={() => this.ignoreIdea(data, secId, rowId, rowMap)}>
+        <Icon active name="checkmark-circle" />
       </Button>
     )
   }
@@ -184,14 +178,13 @@ export default class App extends React.Component {
       <Container>
         <Header>
           <Body>
-            <Title>Stinder</Title>
+            <Title>Packing List</Title>
           </Body>
         </Header>
         <Content>
           <List
             dataSource={rows}
             renderRow={(data) => this.renderRow(data)}
-            renderLeftHiddenRow={(data, secId, rowId, rowMap) => this.renderSwipeRight(data, secId, rowId, rowMap)}
             renderRightHiddenRow={(data, secId, rowId, rowMap) => this.renderSwipeLeft(data, secId, rowId, rowMap)}
             leftOpenValue={75}
             rightOpenValue={-75}
